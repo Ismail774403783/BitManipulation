@@ -4,7 +4,11 @@
 #include "stdafx.h"
 #include <stdlib.h>
 #define UISIZE ( 8*sizeof(unsigned int) )
-#define BITONQ(bm, i) ( bm[(i)/UISIZE] & (1 << ((i)%UISIZE)) )
+#define BMLEN(n) ( 1+(n-1)/(int)UISIZE )
+
+#define BITSET(bm, i)   bm[(i)/UISIZE] |=     1 << ((i)%UISIZE)
+#define BITCLR(bm, i)   bm[(i)/UISIZE] &=   ~(1 << ((i)%UISIZE))
+#define BITONQ(bm, i) ( bm[(i)/UISIZE] &     (1 << ((i)%UISIZE)) )
 
 
 int _tmain(int argc, _TCHAR* argv[])
